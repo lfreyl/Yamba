@@ -5,6 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="button_tweet">tweet</string>
-	<string name="hint_status">What\'s going on?</string>
+    <string name="hint_status">What\'s going on?</string>
+    <string name="textCount">140</string>
+    <string name="username">username</string>
+    <string name="username_summary">username_summary</string>
+    <string name="password_summary">password_summary</string>
+    <string name="password">password</string>  
 
 </resources>

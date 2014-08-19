@@ -27,7 +27,6 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/hint_status"
-        android:background="#cfff"
         android:inputType="textMultiLine" >
         <requestFocus />
     </EditText>
@@ -36,12 +35,10 @@
         android:id="@+id/textViewCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonTweet"
-        android:layout_alignBottom="@+id/buttonTweet"
-        android:layout_alignLeft="@+id/editStatus"
-        android:layout_marginLeft="16dp"
+        android:layout_alignLeft="@+id/buttonTweet"
+        android:layout_alignTop="@+id/editStatus"
+        android:layout_marginLeft="22dp"
         android:text="@string/textCount"
-        android:textColor="@android:color/white"
         android:textAppearance="?android:attr/textAppearanceSmall" />
     
 </RelativeLayout>

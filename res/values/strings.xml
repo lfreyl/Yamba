@@ -20,5 +20,8 @@
     <string name="tittleApiRoot">tittleApiRoot</string>
     <string name="summaryApiRoot">summaryApiRoot</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="status_update">Status Update</string>
+    <string name="interval">Refresh Interval</string>
+    <string name="interval_summary">How frequently should data refresh?</string>
 
 </resources>

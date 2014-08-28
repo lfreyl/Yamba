@@ -17,11 +17,15 @@ public class SubActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case R.id.itemServiceStart:
+			startService(new Intent(this, RefreshService.class)); //
+			break;
 		case android.R.id.home:
 			startActivity(new Intent(this, MainActivity.class)
 					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		default:
-			return super.onOptionsItemSelected(item);
+			return false;
 		}
+		return true;
 	}
 }

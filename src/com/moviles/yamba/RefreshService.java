@@ -3,8 +3,11 @@ package com.moviles.yamba;
 import java.util.List;
 
 import android.app.IntentService;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -16,7 +19,7 @@ import com.marakana.android.yamba.clientlib.YambaClient.Status;
 import com.marakana.android.yamba.clientlib.YambaClientException;
 
 public class RefreshService extends IntentService {
-static final String TAG = "RefreshService"; //
+static final String TAG = RefreshService.class.getSimpleName(); //
 public RefreshService() { //
 super(TAG);
 }
@@ -37,8 +40,7 @@ return START_STICKY;
 }
 @Override
 protected void onHandleIntent(Intent intent) {
-	SharedPreferences prefs = PreferenceManager
-			.getDefaultSharedPreferences(this);
+	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 	final String username = prefs.getString("username", "");
 	final String password = prefs.getString("password", "");
 
@@ -49,26 +51,42 @@ protected void onHandleIntent(Intent intent) {
 		return;
 	}
 	Log.d(TAG, "onStarted");
-
+	DbHelper dbHelper = new DbHelper(this); //
+	SQLiteDatabase db = dbHelper.getWritableDatabase();
+	ContentValues values = new ContentValues();
+	
 
 	YambaClient cloud = new YambaClient(username, password);
 	try {
+		int count = 0;
 		List<Status> timeline = cloud.getTimeline(20);
 		for (Status status : timeline) {
-
-			Log.d(TAG,
-					String.format("%s: %s", status.getUser(),
-							status.getMessage()));
-
+		values.clear();
+		values.put(StatusContract.Column.ID,
+		status.getId());
+		values.put(StatusContract.Column.USER,
+		status.getUser());
+		values.put(StatusContract.Column.MESSAGE,
+		status.getMessage());
+		values.put(StatusContract.Column.CREATED_AT,
+		status.getCreatedAt().getTime());
+		Uri uri = getContentResolver().insert(
+		StatusContract.CONTENT_URI, values); //
+		if (uri != null) {
+		count++; //
+		Log.d(TAG,
+		String.format("%s: %s", status.getUser(),
+		status.getMessage()));
 		}
-
-	} catch (YambaClientException e) {
+		}
+		} catch (YambaClientException e) {
 		Log.e(TAG, "Failed to fetch the timeline", e);
 		e.printStackTrace();
-	}
+		}
+		return;
+		}
 
-	return;
-}
+	
 @Override
 public void onDestroy() { //
 super.onDestroy();

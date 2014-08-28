@@ -41,7 +41,7 @@
         android:layout_alignLeft="@+id/editStatus"
         android:layout_marginLeft="16dp"
         android:text="@string/textCount"
-        android:textColor="@android:color/white"
+        
         android:textAppearance="?android:attr/textAppearanceSmall" />
     
 </RelativeLayout>

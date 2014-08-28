@@ -7,9 +7,18 @@
     <string name="button_tweet">tweet</string>
     <string name="hint_status">What\'s going on?</string>
     <string name="textCount">140</string>
-    <string name="username">username</string>
-    <string name="username_summary">username_summary</string>
-    <string name="password_summary">password_summary</string>
-    <string name="password">password</string>  
+    <string name="tweet">Tweet</string>
+    <string name="refresh">Refresh</string>
+    <string name="purge">Purge</string>
+    <string name="tittleUsername">tittleUsername</string>
+    <string name="summaryUsername">What\'s your user name?</string>
+    <string name="username">Username</string>
+    <string name="password">password</string>
+    <string name="tittlePassword">tittlePassword</string>
+    <string name="summaryPassword">How do you log in?</string>
+    <string name="apiRoot">apiRoot</string>
+    <string name="tittleApiRoot">tittleApiRoot</string>
+    <string name="summaryApiRoot">summaryApiRoot</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
